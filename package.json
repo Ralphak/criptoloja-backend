@@ -1,0 +1,26 @@
+{
+  "name": "criptoloja-backend",
+  "version": "1.0.0",
+  "description": "Código backend do meu trabalho de conclusão do curso de Desenvolvimento Web Fullstack, na PUC Minas.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ralphak/criptoloja-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ralphak/criptoloja-backend/issues"
+  },
+  "homepage": "https://github.com/Ralphak/criptoloja-backend#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "engines": {
+    "node": "14.x"
+  }
+}
