@@ -1,4 +1,4 @@
-const {connection, DataTypes} = require("../db");
+const { connection, DataTypes } = require("../db");
 
 module.exports = connection.define("cotacaocripto", {
     codCripto: {
@@ -14,8 +14,9 @@ module.exports = connection.define("cotacaocripto", {
     },
     cotacaoReal: {
         field: "cotacaoreal",
-        type: DataTypes.NUMBER,
-        allowNull: false
+        type: DataTypes.NUMBER(20, 2),
+        allowNull: false,
+        get() { return parseFloat(this.getDataValue("cotacaoReal")) }
     }
 }, {
     freezeTableName: true,
