@@ -18,9 +18,16 @@
   },
   "homepage": "https://github.com/Ralphak/criptoloja-backend#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "axios": "^0.24.0",
+    "express": "^4.17.1",
+    "express-oauth2-jwt-bearer": "^1.0.1",
+    "pg": "^8.7.1",
+    "sequelize": "^6.12.0-beta.1"
   },
   "engines": {
     "node": "14.x"
+  },
+  "devDependencies": {
+    "dotenv": "^10.0.0"
   }
 }
