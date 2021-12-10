@@ -1,7 +1,10 @@
 const { Sequelize, DataTypes } = require('sequelize');
 
 const ssl = process.env.DATABASE_URL.includes("localhost") ? undefined : { require: true, rejectUnauthorized: false };
-const connection = new Sequelize(process.env.DATABASE_URL, { dialectOptions: { ssl } });
+const connection = new Sequelize(process.env.DATABASE_URL, {
+    logging: false,
+    dialectOptions: { ssl }
+});
 
 module.exports = {
     connection,
