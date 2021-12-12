@@ -1,29 +1,9 @@
 const {
-    carrinho,
     cliente,
     cotacaoCripto,
     produto
 } = require("./models");
 const utils = require("./utils");
-
-exports.carrinhoController = {
-    listarCarrinho: (req, res) => {
-        carrinho.findAll({
-            where: { idCliente: req.params.idCliente }
-        }).then(done => res.json(done)).catch(err => res.status(500).send(utils.logError(err)))
-    },
-    adicionarCarrinho: (req, res) => {
-        carrinho.upsert(req.body).then(done => res.json(done)).catch(err => res.status(500).send(utils.logError(err)))
-    },
-    removerCarrinho: (req, res) => {
-        console.log(req.body);
-        if(!req.body.idCliente || !req.body.idProduto)
-            return res.status(400).send("Informe os ids do cliente e do produto a ser removido.");
-        carrinho.destroy({
-            where: req.body
-        }).then(done => res.json(done)).catch(err => res.status(500).send(utils.logError(err)))
-    }
-}
 
 exports.clienteController = {
     getCliente: async (req, res) => {

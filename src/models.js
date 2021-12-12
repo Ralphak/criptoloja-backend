@@ -1,24 +1,5 @@
 const { connection, DataTypes } = require("./db");
 
-exports.carrinho = connection.define("carrinho", {
-    idCliente: {
-        field: "idcliente",
-        type: DataTypes.NUMBER,
-        primaryKey: true
-    },
-    idProduto: {
-        field: "idproduto",
-        type: DataTypes.NUMBER,
-        primaryKey: true
-    },
-    quantidade: {
-        type: DataTypes.SMALLINT
-    }
-}, {
-    freezeTableName: true,
-    timestamps: false
-})
-
 exports.cliente = connection.define("cliente", {
     idCliente: {
         field: "idcliente",

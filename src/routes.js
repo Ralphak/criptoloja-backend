@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const {
-    carrinhoController,
     clienteController,
     cotacaoCriptoController,
     produtoController
@@ -16,12 +15,6 @@ router.get('/', async (req, res) => res.json({
     status: "OK",
     dbStatus: await require("./db").testConnection()
 }));
-
-//Carrinho
-router.get("/carrinho/:idCliente", checkJwt, carrinhoController.listarCarrinho);
-router.put("/carrinho/", checkJwt, carrinhoController.adicionarCarrinho);
-router.delete("/carrinho/", checkJwt, carrinhoController.removerCarrinho);
-
 //Clientes
 router.get("/clientes/:idCliente?", checkJwt, clienteController.getCliente);
 router.post("/clientes/", checkJwt, clienteController.postCliente);
