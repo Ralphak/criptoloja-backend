@@ -1,5 +1,45 @@
 const { connection, DataTypes } = require("./db");
 
+exports.carrinho = connection.define("carrinho", {
+    idCliente: {
+        field: "idcliente",
+        type: DataTypes.NUMBER,
+        primaryKey: true
+    },
+    idProduto: {
+        field: "idproduto",
+        type: DataTypes.NUMBER,
+        primaryKey: true
+    },
+    quantidade: {
+        type: DataTypes.SMALLINT
+    }
+}, {
+    freezeTableName: true,
+    timestamps: false
+})
+
+exports.cliente = connection.define("cliente", {
+    idCliente: {
+        field: "idcliente",
+        type: DataTypes.NUMBER,
+        primaryKey: true,
+        autoIncrement: true
+    },
+    email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true
+    },
+    nome: {
+        type: DataTypes.STRING,
+        allowNull: false
+    }
+}, {
+    freezeTableName: true,
+    timestamps: false
+})
+
 exports.cotacaoCripto = connection.define("cotacaocripto", {
     codCripto: {
         field: "codcripto",
@@ -36,21 +76,14 @@ exports.produto = connection.define("produto", {
         allowNull: false
     },
     categoria: {
-        field: "categoria",
         type: DataTypes.STRING,
         allowNull: false
     },
     descricao: {
-        field: "descricao",
         type: DataTypes.TEXT
     },
     especificacoes: {
-        field: "especificacoes",
         type: DataTypes.JSON
-    },
-    quantidade: {
-        field: "quantidade",
-        type: DataTypes.SMALLINT,
     },
     precoReal: {
         field: "precoreal",
