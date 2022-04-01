@@ -4,10 +4,12 @@ const {
     enderecoController, pedidoController, produtoController,
     pagamentoController, pagamentoClienteController
 } = require("./controllers");
-const checkJwt = require("express-oauth2-jwt-bearer").auth({
-    audience: process.env.AUTH0_API + "/api/v2/",
-    issuerBaseURL: process.env.AUTH0_API
-});
+const checkJwt = process.argv.includes("run-tests")
+    ? (req, res, next) => next()
+    : require("express-oauth2-jwt-bearer").auth({
+        audience: process.env.AUTH0_API + "/api/v2/",
+        issuerBaseURL: process.env.AUTH0_API
+    });
 
 //Health check
 router.get('/', async (req, res) => res.json({
@@ -45,11 +47,11 @@ router.get("/pagamentos/:idPagamento/cliente/:idCliente", checkJwt, pagamentoCli
 router.put("/pagamentos/cliente", checkJwt, pagamentoClienteController.putPagamentosCliente);
 
 //Pedidos
-router.get("/pedidos/:page?", pedidoController.getPedidos);
-router.post("/pedidos", pedidoController.postPedidos);
+router.get("/pedidos/:page?", checkJwt, pedidoController.getPedidos);
+router.post("/pedidos", checkJwt, pedidoController.postPedidos);
 
 //Produtos
 router.get("/produtos/:idProduto?", produtoController.getProdutos);
-router.put("/produtos", produtoController.putProdutos);
+router.put("/produtos", checkJwt, produtoController.putProdutos);
 
 module.exports = router;
