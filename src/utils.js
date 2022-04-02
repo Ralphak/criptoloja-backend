@@ -1,4 +1,7 @@
 exports.logError = (err, res) => {
     console.error(err);
-    return res.status(500).send(err.toString());
+    let statusCode = 500;
+    if(err.name == "SequelizeUniqueConstraintError")
+        statusCode = 409;
+    return res.status(statusCode).send(err.toString());
 }

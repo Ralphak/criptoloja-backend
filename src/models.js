@@ -4,12 +4,12 @@ exports.avaliacao = connection.define("avaliacao", {
     idCliente: {
         field: "idcliente",
         type: DataTypes.NUMBER,
-        allowNull: false
+        primaryKey: true
     },
     idProduto: {
         field: "idproduto",
         type: DataTypes.NUMBER,
-        allowNull: false
+        primaryKey: true
     },
     recomendado: {
         type: DataTypes.BOOLEAN,
@@ -48,7 +48,6 @@ exports.cotacaoCripto = connection.define("cotacaocripto", {
     codCripto: {
         field: "codcripto",
         type: DataTypes.STRING(5),
-        allowNull: false,
         primaryKey: true
     },
     nomeCripto: {
@@ -125,12 +124,12 @@ exports.pagamentoCliente = connection.define("pagamentocliente", {
     idCliente: {
         field: "idcliente",
         type: DataTypes.NUMBER,
-        allowNull: false
+        primaryKey: true
     },
     idPagamento: {
         field: "idpagamento",
         type: DataTypes.SMALLINT,
-        allowNull: false
+        primaryKey: true
     },
     dadosPagamento: {
         field: "dadospagamento",
@@ -223,13 +222,11 @@ exports.produtoPedido = connection.define("produtopedido", {
     numPedido: {
         field: "numpedido",
         type: DataTypes.BIGINT,
-        allowNull: false,
         primaryKey: true
     },
     idProduto: {
         field: "idproduto",
         type: DataTypes.NUMBER,
-        allowNull: false,
         primaryKey: true
     },
     precoUnitario: {

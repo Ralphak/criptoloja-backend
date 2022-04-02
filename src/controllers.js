@@ -122,6 +122,7 @@ exports.pedidoController = {
         }).then(query => res.json(query)).catch(err => utils.logError(err, res));
     },
     postPedidos: (req, res) => {
+        if(!req.body.produtos) return res.status(400).send("Nenhum produto adicionado ao pedido!");
         connection.transaction(async transaction => {
             let pedidoNovo = await pedido.create(req.body, { transaction });
             let listaProdutos = req.body.produtos.map(p => {
